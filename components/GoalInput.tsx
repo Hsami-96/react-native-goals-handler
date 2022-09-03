@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TextInput, Button, StyleSheet, Modal } from 'react-native'
+import { View, TextInput, Button, StyleSheet, Modal, Image } from 'react-native'
 import { GoalType } from '../models/GoalType'
 
 interface GoalInputProps {
@@ -16,6 +16,7 @@ const goalInputHandler = (value: string) => {
   return (
     <Modal visible={showModal} animationType={"slide"}>
       <View style={styles.inputContainer}>
+        <Image style={styles.image} source={require('../assets/images/goal.png')}/>
         <TextInput
           style={styles.textContainer}
           placeholder="Your goal for this 2022"
@@ -24,16 +25,17 @@ const goalInputHandler = (value: string) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button
+            <Button title="Cancel" onPress={closeModal} color="#f31282" />
+          </View>
+          <View style={styles.button}>
+          <Button
               title="Add Goal"
+              color="#5e0acc"
               onPress={() => {
                 onAddGoal(enteredGoal);
                 setEnteredGoal({ key: "", text: "" });
               }}
             />
-          </View>
-          <View style={styles.button}>
-            <Button title="Cancel" onPress={closeModal} />
           </View>
         </View>
       </View>
@@ -46,15 +48,18 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      marginBottom: 24,
       borderBottomWidth: 1,
-      padding: 16
+      padding: 16,
+      backgroundColor: '#311b6b'
     },
     textContainer: {
       borderBottomWidth: 1,
-      borderBottomColor: '#808080',
+      borderBottomColor: '#e4d0ff',
+      backgroundColor: '#e4d0ff',
+      borderRadius: 6,
       width: '80%',
-      padding: 8
+      padding: 16 ,
+      color: 'white'
     },
     buttonContainer: {
         marginTop: 16,
@@ -63,7 +68,11 @@ const styles = StyleSheet.create({
     button: {
         width: 100,
         marginHorizontal: 8,
-
+    },
+    image: {
+        width: 100,
+        height: 100,
+        margin: 20
     }
   });
   

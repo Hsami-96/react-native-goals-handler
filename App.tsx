@@ -21,6 +21,7 @@ export default function App() {
         { key: Math.random().toString(), text: enteredGoal.text },
       ]);
     }
+    setModalVisible(false)
   };
 
   const removeGoal = (goalToRemove: GoalType) => {
@@ -31,7 +32,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <Button title="Add new goal" color="#5e0acc" onPress={startAddGoalHandler} />
+      <Button title="Add new goal" color="#a065ec" onPress={startAddGoalHandler} />
       <GoalInput onAddGoal={addGoalHandler} showModal={modalVisible} closeModal={() => setModalVisible(false)} />
       <View style={styles.goalsContainer}>
         <FlatList
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 16,
     flex: 1,
+    backgroundColor: '#1e085a'
   },
   inputContainer: {
     flex: 1,
